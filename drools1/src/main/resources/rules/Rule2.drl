@@ -1,6 +1,7 @@
 package rules
 
 import com.karthik.drools1.model.Product;
+import java.math.BigDecimal;
 
 rule "Offer for Diamond"
 	when 
@@ -14,4 +15,12 @@ rule "Offer for Gold"
 	then
 		productObject.setDiscount(25);
 	end
+rule "within checker"
+	when 
+		// productObject: Product(ltv > new BigDecimal("89.01") && ltv < new BigDecimal("90.01"))
+		productObject: Product(ltv > 89.01B && ltv < 90.01B)
+			then
+		productObject.setWithin(true);
+	end
+	
 

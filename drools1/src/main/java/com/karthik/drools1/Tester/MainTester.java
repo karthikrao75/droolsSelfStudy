@@ -1,5 +1,7 @@
 package com.karthik.drools1.Tester;
 
+import java.math.BigDecimal;
+
 import org.kie.api.runtime.StatelessKieSession;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,9 +18,10 @@ public class MainTester {
 
 		Product product = new Product();
 		product.setType("gold");
+		product.setLtv(new BigDecimal("90.01"));
 
 		kieSession.execute(product);
-		System.out.println("The discount for the product " + product.getType() + " is " + product.getDiscount());
+		System.out.println("The discount for the product " + product.getType() + " is " + product.getDiscount()+" ltv is within "+product.isWithin());
 
 	}
 
